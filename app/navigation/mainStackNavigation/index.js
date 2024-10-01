@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-
-import { HomeScreen, LoginScreen, RegisterScreen, SplashScreen } from '../../screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useSelector } from 'react-redux'
+
+import { HomeScreen, LoginScreen, RegisterScreen, SplashScreen } from '../../screens'
+import { BottomStackNavigation } from '../bottomStackNavigation'
 
 
 const Stack = createNativeStackNavigator()
@@ -50,8 +51,8 @@ export const MainStackNavigation = () => {
           )
         }
         <Stack.Screen
-          component={HomeScreen}
-          name='homeScreen'
+          component={BottomStackNavigation}
+          name='bottomStackNavigation'
         />
       </Stack.Navigator>
     </NavigationContainer>

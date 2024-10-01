@@ -51,6 +51,7 @@ export const flatListView = () => ({
   justifyContent: 'space-between',
   flexWrap: 'wrap',
   marginTop: size.moderateScale(10),
+  paddingBottom: size.moderateScale(100)
 })
 
 export const error = () => ({

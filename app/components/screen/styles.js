@@ -1,4 +1,4 @@
-import {color} from '../../theme';
+import {color, size} from '../../theme';
 export const full = (statusBarHeight) => ({
   flexGrow: 1,
   marginTop: statusBarHeight,

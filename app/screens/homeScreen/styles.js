@@ -1,13 +1,13 @@
 import { color, fonts, fontSize, size } from "../../theme"
 
-export const screen = () => ({
+export const mainContainerView = () => ({
   flex: 1
 })
 
 export const mainView = () => ({
   flex: 1,
   backgroundColor: color.primary,
-  marginTop: size.moderateScale(20)
+  paddingTop: size.moderateScale(20)
 })
 
 export const topView = () => ({

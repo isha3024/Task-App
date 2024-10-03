@@ -8,6 +8,7 @@ export const addUser = (user) => {
 }
 
 export const login = (credentials) => {
+  console.log("credentials: ",credentials)
   return {
     type: actions.LOGIN_USER,
     payload: credentials

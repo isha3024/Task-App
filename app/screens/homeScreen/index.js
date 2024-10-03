@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity, FlatList, ToastAndroid } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, ToastAndroid, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 import { removeUser } from '../../redux/actions/AuthActions'
 import { ProductCard, Screen } from '../../components'
-import { color, IcLogout, images, size, } from '../../theme'
+import { color, IcLogout, size, } from '../../theme'
 import { addToCart } from '../../redux/actions/UserActions'
 import * as styles from './styles'
 
@@ -13,8 +13,6 @@ export const HomeScreen = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.currentUser);
-  const cart = useSelector((state) => state.cart.items);
-  console.log("cart: ", cart)
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -36,14 +34,21 @@ export const HomeScreen = () => {
     setLoading(true)
     axios(options)
     .then((response) => {
-      console.log("response::: ", response.data.data);
       setProducts(response.data.data)
       setLoading(false)
     })
     .catch((error) => {
-      console.log("error fetching products in apiCalls: ", error);
+      console.log("error fetching products: ", error);
       setLoading(false)
     })
+  }
+
+  const alertUser = () => {
+    Alert.alert('Logout', 'Are you sure you want to logout ?',
+      [
+        {text: 'Ok', onPress: () => userLogout()},
+        {text:  'Cancel', onPress: () => null, style: 'cancel'}],
+    )
   }
 
   const userLogout = () => {
@@ -62,17 +67,17 @@ export const HomeScreen = () => {
   }, [])
 
   return (
-    <Screen translucent={true}>
+    <View style={styles.mainContainerView()}>
       <View style={styles.mainView()}>
         <View style={styles.topView()}>
           <Text style={styles.name()}>Welcome!, {user?.name}</Text>
-          <TouchableOpacity style={styles.rightIconView()} onPress={userLogout}>
+          <TouchableOpacity style={styles.rightIconView()} onPress={alertUser}>
             <IcLogout fill={color.error} />
           </TouchableOpacity>
         </View>
         <View style={styles.bottomView()}>
           <Text style={styles.header()}>Products</Text>
-          <Screen loading={loading} withScroll>
+          <Screen style={{backgroundColor: color.borderColor}} loading={loading} location={size.moderateScale(-150)} withScroll>
             <View style={styles.flatListView()}>
               <FlatList
                 numColumns={2}
@@ -97,6 +102,6 @@ export const HomeScreen = () => {
           </Screen>
         </View>
       </View>
-    </Screen >
+    </View >
   )
 }

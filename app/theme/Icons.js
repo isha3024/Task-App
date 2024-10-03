@@ -1,3 +1,4 @@
+import { BackArrow } from "./image/svgIcons/IcBackArrow"
 import { Cart } from "./image/svgIcons/IcCart"
 import { EyeClose } from "./image/svgIcons/IcEyeClose"
 import { EyeOpen } from "./image/svgIcons/IcEyeOpen"
@@ -13,3 +14,4 @@ export const IcHome = props => <Home {...props} />
 export const IcCart = props => <Cart {...props} />
 export const IcPlus = props => <Plus {...props} />
 export const IcMinus = props => <Minus {...props} />
+export const IcBackArrow = props => <BackArrow {...props} />

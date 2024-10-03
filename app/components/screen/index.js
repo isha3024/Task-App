@@ -26,6 +26,7 @@ export const Screen = ({
   keyboardShouldPersistTaps,
   extraScrollHeight,
   loading,
+  location,
   translucent,
   ...props
 }) => {
@@ -38,7 +39,7 @@ export const Screen = ({
           backgroundColor={bgColor ?? color.primary}
           barStyle={bgColor ? 'light-content' : 'dark-content'}
         />
-        {loading && <Loader />}
+        {loading && <Loader location={location} />}
         <KeyboardAwareScrollView
           keyboardShouldPersistTaps={keyboardShouldPersistTaps || 'handled'}
           contentContainerStyle={scrollStyle}
@@ -66,7 +67,7 @@ export const Screen = ({
             backgroundColor={bgColor ?? color.primary}
             barStyle={bgColor ? 'light-content' : 'dark-content'}
           />
-          {loading && <Loader />}
+          {loading && <Loader location={location} />}
           <View style={styles.container(style)}>{children}</View>
         </SafeAreaView>
       </TouchableWithoutFeedback>

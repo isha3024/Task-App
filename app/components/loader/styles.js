@@ -1,6 +1,6 @@
 import {color, size} from '../../theme';
 
-export const mainView = () => ({
+export const mainView = (location) => ({
   zIndex: 100000,
   alignSelf: 'center',
   justifyContent: 'center',
@@ -9,6 +9,7 @@ export const mainView = () => ({
   width: size.deviceWidth * 2,
   position: 'absolute',
   transform: [{scale: 2}],
+  top: size.moderateScale(location)
 });
 
 export const lottieImage = () => ({

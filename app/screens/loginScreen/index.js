@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { View, Text, ToastAndroid } from 'react-native'
+import { View, Text, ToastAndroid, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 
-import { Button, InputBox, Screen } from '../../components'
-import { IcEyeClose, IcEyeOpen } from '../../theme'
-import * as styles from './styles'
 import { login } from '../../redux/actions/AuthActions'
+import { Button, InputBox, Screen } from '../../components'
+import { IcBackArrow, IcEyeClose, IcEyeOpen } from '../../theme'
+import * as styles from './styles'
 
 export const LoginScreen = () => {
 
@@ -54,20 +54,20 @@ export const LoginScreen = () => {
       email: inputFields?.email,
       password:inputFields?.password
     }
-
     console.log("user in login screen: ",user)
 
     dispatch(login(user));
-
-    ToastAndroid.show('User logged in successfully 😊', ToastAndroid.SHORT)
-    navigation.navigate('homeScreen');
+    // navigation.navigate('bottomStackNavigation');
   }
 
   return (
     <Screen withScroll translucent={true} scrollStyle={styles.screen()}>
       <View style={styles.mainView()}>
       <View style={styles.topView()}>
-          <Text style={styles.headerText()}>Login</Text>
+        <TouchableOpacity style={styles.backArrowView()} onPress={()=> navigation.navigate('registerScreen')}>
+          <IcBackArrow />
+        </TouchableOpacity>
+        <Text style={styles.headerText()}>Login</Text>
         </View>
         <View style={styles.middleView()}>
           <View style={styles.formView()}>

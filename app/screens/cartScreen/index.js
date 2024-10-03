@@ -59,7 +59,7 @@ export const CartScreen = () => {
               ? (
                 <FlatList
                   data={cart}
-                  contentContainerStyle={{ gap: size.moderateScale(20) }}
+                  contentContainerStyle={{ gap: size.moderateScale(20), paddingVertical: size.moderateScale(20) }}
                   renderItem={({ item }) => {
                     return (
                       <ProductCard
